@@ -2,7 +2,6 @@ package gngo.com.example.ngoplanetlistrecycler.ui.main;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,23 +23,23 @@ import java.util.List;
 
 import gngo.com.example.ngoplanetlistrecycler.R;
 
-public class PlanetListFragment extends Fragment implements PlanetRecyclerAdapter.OnAdapterItemInteraction{
+public class RestaurantListFragment extends Fragment implements RestaurantRecyclerAdapter.OnAdapterItemInteraction{
 
     private PlanetListViewModel mViewModel;
 
     private int mPosition;
     private List<Planet> planet_data;
-    PlanetRecyclerAdapter planetRecyclerAdapter;
+    RestaurantRecyclerAdapter planetRecyclerAdapter;
 
-    public static PlanetListFragment newInstance() {
-        return new PlanetListFragment();
+    public static RestaurantListFragment newInstance() {
+        return new RestaurantListFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.planet_list_fragment, container, false);
+        return inflater.inflate(R.layout.restaurant_list_fragment, container, false);
     }
 
     @Override
@@ -65,7 +64,7 @@ public class PlanetListFragment extends Fragment implements PlanetRecyclerAdapte
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Instantiate the recyclerViewAdapter, pass in data and reference to this object
-        planetRecyclerAdapter = new PlanetRecyclerAdapter(planet_data, this);
+        planetRecyclerAdapter = new RestaurantRecyclerAdapter(planet_data, this);
 
         // Add the adapter to the recyclerView
         recyclerView.setAdapter(planetRecyclerAdapter);
@@ -88,15 +87,10 @@ public class PlanetListFragment extends Fragment implements PlanetRecyclerAdapte
         Planet[] planets = new Planet[]{
                 new Planet(R.drawable.mercury_symbol, getString(R.string.planet_mercury), type_planet),
                 new Planet(R.drawable.venus_symbol, getString(R.string.planet_venus), type_planet),
-                new Planet(R.drawable.earth_symbol, getString(R.string.plaent_earth), type_planet),
+                new Planet(R.drawable.earth_symbol, getString(R.string.planet_earth), type_planet),
                 new Planet(R.drawable.mars_symbol, getString(R.string.planet_mars), type_planet),
                 new Planet(R.drawable.jupiter_symbol, getString(R.string.planet_jupiter), type_planet),
-                new Planet(R.drawable.saturn_symbol, getString(R.string.planet_saturn), type_planet),
-                new Planet(R.drawable.uranus_symbol, getString(R.string.planet_uranus), type_planet),
-                new Planet(R.drawable.neptune_symbol, getString(R.string.planet_neptune), type_planet),
-                new Planet(R.drawable.ceres_symbol, getString(R.string.planet_ceres), type_minor_planet),
-                new Planet(R.drawable.pluto_symbol, getString(R.string.planet_pluto), type_minor_planet),
-                new Planet(R.drawable.eris_symbol, getString(R.string.planet_eris), type_minor_planet),
+
         };
 
         // Convert array to List.

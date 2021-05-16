@@ -13,7 +13,7 @@ import java.util.List;
 
 import gngo.com.example.ngoplanetlistrecycler.R;
 
-public class PlanetRecyclerAdapter extends RecyclerView.Adapter<PlanetRecyclerAdapter.ViewHolder> {
+public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRecyclerAdapter.ViewHolder> {
     public interface OnAdapterItemInteraction{
         void onItemSelected(Planet planet, Integer position);
     }
@@ -21,7 +21,7 @@ public class PlanetRecyclerAdapter extends RecyclerView.Adapter<PlanetRecyclerAd
     private final List<Planet> mvalues;
     final OnAdapterItemInteraction mListener;
 
-    public PlanetRecyclerAdapter(List<Planet> items, OnAdapterItemInteraction listener){
+    public RestaurantRecyclerAdapter(List<Planet> items, OnAdapterItemInteraction listener){
         mvalues = items;
         mListener = listener;
     }
@@ -35,9 +35,9 @@ public class PlanetRecyclerAdapter extends RecyclerView.Adapter<PlanetRecyclerAd
         public ViewHolder(View view){
             super(view);
             mView = view;
-            planetLogolv = view.findViewById(R.id.planet_logo);
-            planetNameTv = view.findViewById(R.id.planet_name);
-            planetTypeTv = view.findViewById(R.id.planet_type);
+            planetLogolv = view.findViewById(R.id.restaurant_logo);
+            planetNameTv = view.findViewById(R.id.restaurant_name);
+            planetTypeTv = view.findViewById(R.id.restaurant_type);
         }
 
         @Override
@@ -50,13 +50,13 @@ public class PlanetRecyclerAdapter extends RecyclerView.Adapter<PlanetRecyclerAd
 
     @NonNull
     @Override
-    public PlanetRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.planet_item, parent, false);
+    public RestaurantRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlanetRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RestaurantRecyclerAdapter.ViewHolder holder, int position) {
         holder.planetNameTv.setText(mvalues.get(position).getName());
         holder.planetTypeTv.setText(mvalues.get(position).getType());
         holder.planetLogolv.setImageResource(mvalues.get(position).getLogo());

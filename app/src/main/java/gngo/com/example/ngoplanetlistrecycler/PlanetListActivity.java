@@ -4,17 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import gngo.com.example.ngoplanetlistrecycler.ui.main.PlanetListFragment;
+import gngo.com.example.ngoplanetlistrecycler.ui.main.RestaurantListFragment;
 
 public class PlanetListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.planet_list_activity);
+        setContentView(R.layout.restaurant_list_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, PlanetListFragment.newInstance())
+                    .replace(R.id.container, RestaurantListFragment.newInstance())
                     .commitNow();
         }
     }
