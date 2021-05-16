@@ -25,4 +25,26 @@
     <string name="planet_eris">Eris</string>
     <string name="button_text">btn_what_is_it</string>
 
+    <string name="name_spoonhouse">Spoon House</string>
+    <string name="name_leos_tacos">Leos Tacos</string>
+    <string name="name_sam_woo">Sam Woo</string>
+    <string name="name_phillipe">Phillipe</string>
+    <string name="name_apple_pan">Apple Pan</string>
+
+    <string name="type_italian">Italian</string>
+    <string name="type_mexican">Mexican</string>
+    <string name="type_chinese">Chinese</string>
+    <string name="type_sandwich">Sandwich</string>
+    <string name="type_burger">Burger</string>
+
+    <string name="cost_one">CostOne</string>
+    <string name="cost_two">CostTwo</string>
+    <string name="cost_three">CostThree</string>
+    <string name="cost_four">CostFour</string>
+
+    <string name="location_gardena">Gardena</string>
+    <string name="location_los_angeles">Los Angeles</string>
+    <string name="location_alhambra">Alhambra</string>
+    
+
 </resources>
