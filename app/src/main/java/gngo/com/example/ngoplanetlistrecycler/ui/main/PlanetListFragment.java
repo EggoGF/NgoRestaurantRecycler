@@ -1,0 +1,114 @@
+package gngo.com.example.ngoplanetlistrecycler.ui.main;
+
+import androidx.lifecycle.ViewModelProvider;
+
+import android.media.Image;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import gngo.com.example.ngoplanetlistrecycler.R;
+
+public class PlanetListFragment extends Fragment implements PlanetRecyclerAdapter.OnAdapterItemInteraction{
+
+    private PlanetListViewModel mViewModel;
+
+    private int mPosition;
+    private List<Planet> planet_data;
+    PlanetRecyclerAdapter planetRecyclerAdapter;
+
+    public static PlanetListFragment newInstance() {
+        return new PlanetListFragment();
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.planet_list_fragment, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(PlanetListViewModel.class);
+
+        Button whatButton = getActivity().findViewById(R.id.planetWhatIsItBtn);
+        whatButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                clickWhatIsItButton();
+            }
+        });
+
+        // Set up the data
+        planet_data = setupPlanets();
+
+        // Instantiate the recyclerView
+        RecyclerView recyclerView = getActivity().findViewById(R.id.planetRecyclerView);
+
+        // Instantiate the layoutManager and add it into the recyclerView
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // Instantiate the recyclerViewAdapter, pass in data and reference to this object
+        planetRecyclerAdapter = new PlanetRecyclerAdapter(planet_data, this);
+
+        // Add the adapter to the recyclerView
+        recyclerView.setAdapter(planetRecyclerAdapter);
+    }
+
+    private void clickWhatIsItButton(){
+        String message = planet_data.get(mPosition).name + " "
+                + getResources().getString(R.string.message_is_a) + " "
+                + planet_data.get(mPosition).type;
+        Toast toast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    private List<Planet> setupPlanets(){
+        String type_planet = getResources().getString(R.string.type_planet).toString();
+        String type_minor_planet = getResources().getString(R.string.type_minor_planet).toString();
+        List<Planet> planet_data_list;
+
+        Planet[] planets = new Planet[]{
+                new Planet(R.drawable.mercury_symbol, getString(R.string.planet_mercury), type_planet),
+                new Planet(R.drawable.venus_symbol, getString(R.string.planet_venus), type_planet),
+                new Planet(R.drawable.earth_symbol, getString(R.string.plaent_earth), type_planet),
+                new Planet(R.drawable.mars_symbol, getString(R.string.planet_mars), type_planet),
+                new Planet(R.drawable.jupiter_symbol, getString(R.string.planet_jupiter), type_planet),
+                new Planet(R.drawable.saturn_symbol, getString(R.string.planet_saturn), type_planet),
+                new Planet(R.drawable.uranus_symbol, getString(R.string.planet_uranus), type_planet),
+                new Planet(R.drawable.neptune_symbol, getString(R.string.planet_neptune), type_planet),
+                new Planet(R.drawable.ceres_symbol, getString(R.string.planet_ceres), type_minor_planet),
+                new Planet(R.drawable.pluto_symbol, getString(R.string.planet_pluto), type_minor_planet),
+                new Planet(R.drawable.eris_symbol, getString(R.string.planet_eris), type_minor_planet),
+        };
+
+        // Convert array to List.
+        planet_data_list = new ArrayList<>(Arrays.asList(planets));
+        return planet_data_list;
+
+    }
+
+    @Override
+    public void onItemSelected(Planet planet, Integer position) {
+        String item = planet.getName();
+        Toast.makeText(getActivity(), item, Toast.LENGTH_SHORT).show();
+        mPosition = position;
+    }
+}
