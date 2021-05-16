@@ -4,6 +4,8 @@ public class Restaurant {
     public int logo;
     public String name;
     public String type;
+    public String location;
+    public String cost;
 
     public Restaurant(){
         super();
@@ -14,6 +16,8 @@ public class Restaurant {
         this.logo = logo;
         this.name = name;
         this.type = type;
+        this.location = location;
+        this.cost = cost;
     }
 
     public int getLogo(){
