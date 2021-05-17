@@ -23,9 +23,9 @@
     <string name="planet_ceres">Ceres</string>
     <string name="planet_pluto">Pluto</string>
     <string name="planet_eris">Eris</string>
-    <string name="button_text">btn_what_is_it</string>
+    <string name="button_text">More Info</string>
 
-    <string name="name_spoonhouse">Spoon House</string>
+    <string name="name_spoon_house">Spoon House</string>
     <string name="name_leos_tacos">Leos Tacos</string>
     <string name="name_sam_woo">Sam Woo</string>
     <string name="name_phillipe">Phillipe</string>
@@ -45,6 +45,6 @@
     <string name="location_gardena">Gardena</string>
     <string name="location_los_angeles">Los Angeles</string>
     <string name="location_alhambra">Alhambra</string>
-    
+
 
 </resources>

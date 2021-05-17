@@ -25,11 +25,11 @@ import gngo.com.example.ngoplanetlistrecycler.R;
 
 public class RestaurantListFragment extends Fragment implements RestaurantRecyclerAdapter.OnAdapterItemInteraction{
 
-    private PlanetListViewModel mViewModel;
+    private RestaurantListViewModel mViewModel;
 
     private int mPosition;
-    private List<Planet> planet_data;
-    RestaurantRecyclerAdapter planetRecyclerAdapter;
+    private List<Restaurant> restaurant_data;
+    RestaurantRecyclerAdapter restaurantRecyclerAdapter;
 
     public static RestaurantListFragment newInstance() {
         return new RestaurantListFragment();
@@ -45,7 +45,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PlanetListViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RestaurantListViewModel.class);
 
         Button whatButton = getActivity().findViewById(R.id.planetWhatIsItBtn);
         whatButton.setOnClickListener(new View.OnClickListener(){
@@ -55,7 +55,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
         });
 
         // Set up the data
-        planet_data = setupPlanets();
+        restaurant_data = setupRestaurants();
 
         // Instantiate the recyclerView
         RecyclerView recyclerView = getActivity().findViewById(R.id.planetRecyclerView);
@@ -64,44 +64,44 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Instantiate the recyclerViewAdapter, pass in data and reference to this object
-        planetRecyclerAdapter = new RestaurantRecyclerAdapter(planet_data, this);
+        restaurantRecyclerAdapter = new RestaurantRecyclerAdapter(restaurant_data, this);
 
         // Add the adapter to the recyclerView
-        recyclerView.setAdapter(planetRecyclerAdapter);
+        recyclerView.setAdapter(restaurantRecyclerAdapter);
     }
 
     private void clickWhatIsItButton(){
-        String message = planet_data.get(mPosition).name + " "
+        String message = restaurant_data.get(mPosition).name + " "
                 + getResources().getString(R.string.message_is_a) + " "
-                + planet_data.get(mPosition).type;
+                + restaurant_data.get(mPosition).type;
         Toast toast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
-    private List<Planet> setupPlanets(){
+    private List<Restaurant> setupRestaurants(){
         String type_planet = getResources().getString(R.string.type_planet).toString();
         String type_minor_planet = getResources().getString(R.string.type_minor_planet).toString();
-        List<Planet> planet_data_list;
+        List<Restaurant> restaurant_data_list;
 
-        Planet[] planets = new Planet[]{
-                new Planet(R.drawable.mercury_symbol, getString(R.string.planet_mercury), type_planet),
-                new Planet(R.drawable.venus_symbol, getString(R.string.planet_venus), type_planet),
-                new Planet(R.drawable.earth_symbol, getString(R.string.planet_earth), type_planet),
-                new Planet(R.drawable.mars_symbol, getString(R.string.planet_mars), type_planet),
-                new Planet(R.drawable.jupiter_symbol, getString(R.string.planet_jupiter), type_planet),
+        Restaurant[] planets = new Restaurant[]{
+                new Restaurant(R.drawable.mercury_symbol, getString(R.string.name_spoon_house), type_planet),
+                new Restaurant(R.drawable.venus_symbol, getString(R.string.name_leos_tacos), type_planet),
+                new Restaurant(R.drawable.earth_symbol, getString(R.string.name_sam_woo), type_planet),
+                new Restaurant(R.drawable.mars_symbol, getString(R.string.name_phillipe), type_planet),
+                new Restaurant(R.drawable.jupiter_symbol, getString(R.string.name_apple_pan), type_planet),
 
         };
 
         // Convert array to List.
-        planet_data_list = new ArrayList<>(Arrays.asList(planets));
-        return planet_data_list;
+        restaurant_data_list = new ArrayList<>(Arrays.asList(planets));
+        return restaurant_data_list;
 
     }
 
     @Override
-    public void onItemSelected(Planet planet, Integer position) {
-        String item = planet.getName();
+    public void onItemSelected(Restaurant restaurant, Integer position) {
+        String item = restaurant.getName();
         Toast.makeText(getActivity(), item, Toast.LENGTH_SHORT).show();
         mPosition = position;
     }
