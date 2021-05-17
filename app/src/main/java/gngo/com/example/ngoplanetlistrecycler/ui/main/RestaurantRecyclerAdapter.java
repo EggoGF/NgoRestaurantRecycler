@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import gngo.com.example.ngoplanetlistrecycler.R;
@@ -31,6 +33,8 @@ public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRe
         final ImageView restaurantLogolv;
         final TextView restaurantNameTv;
         final TextView restaurantTypeTv;
+        final TextView restaurantCostTv;
+        final TextView restaurantLocationTV;
 
         public ViewHolder(View view){
             super(view);
@@ -38,6 +42,8 @@ public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRe
             restaurantLogolv = view.findViewById(R.id.restaurant_logo);
             restaurantNameTv = view.findViewById(R.id.restaurant_name);
             restaurantTypeTv = view.findViewById(R.id.restaurant_type);
+            restaurantCostTv = view.findViewById(R.id.restaurant_cost);
+            restaurantLocationTV = view.findViewById(R.id.restaurant_location);
         }
 
         @Override
@@ -60,6 +66,8 @@ public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRe
         holder.restaurantNameTv.setText(mvalues.get(position).getName());
         holder.restaurantTypeTv.setText(mvalues.get(position).getType());
         holder.restaurantLogolv.setImageResource(mvalues.get(position).getLogo());
+        holder.restaurantCostTv.setText(mvalues.get(position).getCost());
+        holder.restaurantLocationTV.setText(mvalues.get(position).getLocation());
 
         final Restaurant selectedRestaurant = mvalues.get(position);
         final int pos = holder.getAdapterPosition();

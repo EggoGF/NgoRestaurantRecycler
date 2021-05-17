@@ -74,23 +74,30 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
         String message = restaurant_data.get(mPosition).name + " "
                 + getResources().getString(R.string.message_is_a) + " "
                 + restaurant_data.get(mPosition).type
-                + " restaurant.";
+                + " restaurant in "
+                + restaurant_data.get(mPosition).location
+                + ".";
         Toast toast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
     private List<Restaurant> setupRestaurants(){
-        String type_planet = getResources().getString(R.string.type_planet).toString();
-        String type_minor_planet = getResources().getString(R.string.type_minor_planet).toString();
+        /*String type_planet = getResources().getString(R.string.type_planet).toString();
+        String type_minor_planet = getResources().getString(R.string.type_minor_planet).toString();*/
         List<Restaurant> restaurant_data_list;
 
         Restaurant[] planets = new Restaurant[]{
-                new Restaurant(R.drawable.mercury_symbol, getString(R.string.name_spoon_house), getString(R.string.type_italian)),
-                new Restaurant(R.drawable.venus_symbol, getString(R.string.name_leos_tacos), getString(R.string.type_mexican)),
-                new Restaurant(R.drawable.earth_symbol, getString(R.string.name_sam_woo), getString(R.string.type_chinese)),
-                new Restaurant(R.drawable.mars_symbol, getString(R.string.name_phillipe), getString(R.string.type_sandwich)),
-                new Restaurant(R.drawable.jupiter_symbol, getString(R.string.name_apple_pan), getString(R.string.type_burger)),
+                new Restaurant(R.drawable.mercury_symbol, getString(R.string.name_spoon_house), getString(R.string.type_italian),
+                        getString(R.string.cost_two), getString(R.string.location_gardena)),
+                new Restaurant(R.drawable.venus_symbol, getString(R.string.name_leos_tacos), getString(R.string.type_mexican),
+                        getString(R.string.cost_one), getString(R.string.location_los_angeles)),
+                new Restaurant(R.drawable.earth_symbol, getString(R.string.name_sam_woo), getString(R.string.type_chinese),
+                        getString(R.string.cost_two), getString(R.string.location_alhambra)),
+                new Restaurant(R.drawable.mars_symbol, getString(R.string.name_phillipe), getString(R.string.type_sandwich),
+                        getString(R.string.cost_two), getString(R.string.location_los_angeles)),
+                new Restaurant(R.drawable.jupiter_symbol, getString(R.string.name_apple_pan), getString(R.string.type_burger),
+                        getString(R.string.cost_two), getString(R.string.location_los_angeles)),
 
         };
 

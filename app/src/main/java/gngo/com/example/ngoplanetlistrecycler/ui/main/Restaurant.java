@@ -11,7 +11,7 @@ public class Restaurant {
         super();
     }
 
-    public Restaurant(int logo, String name, String type){
+    public Restaurant(int logo, String name, String type, String cost, String location){
         super();
         this.logo = logo;
         this.name = name;
@@ -31,5 +31,9 @@ public class Restaurant {
     public String getType(){
         return type;
     }
+
+    public String getCost() {return cost; }
+
+    public String getLocation() {return location; }
 }
 
