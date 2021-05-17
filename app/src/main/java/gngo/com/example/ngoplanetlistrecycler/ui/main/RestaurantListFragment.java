@@ -73,7 +73,8 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
     private void clickWhatIsItButton(){
         String message = restaurant_data.get(mPosition).name + " "
                 + getResources().getString(R.string.message_is_a) + " "
-                + restaurant_data.get(mPosition).type;
+                + restaurant_data.get(mPosition).type
+                + " restaurant.";
         Toast toast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
@@ -85,11 +86,11 @@ public class RestaurantListFragment extends Fragment implements RestaurantRecycl
         List<Restaurant> restaurant_data_list;
 
         Restaurant[] planets = new Restaurant[]{
-                new Restaurant(R.drawable.mercury_symbol, getString(R.string.name_spoon_house), type_planet),
-                new Restaurant(R.drawable.venus_symbol, getString(R.string.name_leos_tacos), type_planet),
-                new Restaurant(R.drawable.earth_symbol, getString(R.string.name_sam_woo), type_planet),
-                new Restaurant(R.drawable.mars_symbol, getString(R.string.name_phillipe), type_planet),
-                new Restaurant(R.drawable.jupiter_symbol, getString(R.string.name_apple_pan), type_planet),
+                new Restaurant(R.drawable.mercury_symbol, getString(R.string.name_spoon_house), getString(R.string.type_italian)),
+                new Restaurant(R.drawable.venus_symbol, getString(R.string.name_leos_tacos), getString(R.string.type_mexican)),
+                new Restaurant(R.drawable.earth_symbol, getString(R.string.name_sam_woo), getString(R.string.type_chinese)),
+                new Restaurant(R.drawable.mars_symbol, getString(R.string.name_phillipe), getString(R.string.type_sandwich)),
+                new Restaurant(R.drawable.jupiter_symbol, getString(R.string.name_apple_pan), getString(R.string.type_burger)),
 
         };
 

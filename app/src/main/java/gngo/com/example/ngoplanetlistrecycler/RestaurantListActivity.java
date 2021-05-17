@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import gngo.com.example.ngoplanetlistrecycler.ui.main.RestaurantListFragment;
 
-public class PlanetListActivity extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
